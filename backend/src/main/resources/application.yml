@@ -1,0 +1,33 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:h2:file:./data/bloodlink;AUTO_SERVER=TRUE
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  # Email (optional). Fill these in to send real emails; otherwise emails are only logged.
+  # mail:
+  #   host: smtp.gmail.com
+  #   port: 587
+  #   username: you@gmail.com
+  #   password: app-password
+  #   properties.mail.smtp.auth: true
+  #   properties.mail.smtp.starttls.enable: true
+app:
+  jwt:
+    secret: ${JWT_SECRET:change-this-secret-to-a-long-random-string-before-production-1234}
+    expiration-hours: 24
+  donation-gap-months: 4
+  cors-origins: ${CORS_ORIGINS:http://localhost:5173}
+  seed-demo-data: ${SEED_DEMO:true}
+  mail:
+    from: ${MAIL_FROM:no-reply@bloodlink.lk}
+  sms:
+    enabled: ${SMS_ENABLED:false}
+    url: ${SMS_URL:}
+    token: ${SMS_TOKEN:}
+    sender: ${SMS_SENDER:BloodLink}
